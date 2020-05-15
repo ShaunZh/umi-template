@@ -3,103 +3,107 @@
  * @Author: Hexon
  * @Date: 2020-05-13 20:32:13
  * @LastEditors: Hexon
- * @LastEditTime: 2020-05-15 10:53:38
+ * @LastEditTime: 2020-05-15 16:30:04
  */
 //config/route.ts
 export const routes = [
   {
     path: '/user',
-    component: '@/layouts/BlankLayout',
+    component: '../layouts/BlankLayout',
     routes: [
       {
         name: 'login',
         path: '/user/login',
-        component: '@/pages/user/login',
+        component: './user/login',
       },
     ],
   },
   {
     path: '/',
-    component: '@/layouts/SecurityLayout',
+    component: '../layouts/SecurityLayout',
     routes: [
       {
         path: '/',
-        component: '@/layouts/BasicLayout',
+        component: '../layouts/BasicLayout',
         routes: [
           {
-            path: '/welcome',
-            exact: true,
-            component: '@/pages/welcome',
+            path: '/',
+            redirect: '/welcome',
           },
           {
-            path: '/live',
+            path: '/welcome',
+            name: '欢迎',
             exact: true,
-            menu: {
-              name: '直播管理', // 兼容此写法
-            },
-            access: 'live',
+            component: './welcome',
+          },
+
+          { path: '/live', redirect: '/live/index' },
+          {
+            path: '/live',
+            name: '直播间管理',
             routes: [
               {
                 path: '/live/index',
-                component: '@/pages/live/index',
-                exact: true,
-                access: 'live/index',
+                name: '直播间理',
+                hideInMenu: true,
+                component: './live/index/index',
+                // access: 'live/index',
               },
               {
-                path: '/live/create',
-                component: '@/pages/live/create',
-                exact: true,
-                access: 'live/create',
+                path: 'create',
+                component: './live/create',
+                hideInMenu: true,
+                name: '创建直播间',
+                // access: 'live/create',
               },
               {
-                path: '/live/edit',
-                component: '@/pages/live/edit',
-                exact: true,
-                access: 'live/edit',
+                path: 'edit',
+                component: './live/edit',
+                name: '编辑直播间',
+                hideInMenu: true,
+                // access: 'live/edit',
               },
               {
-                path: '/live/manage',
-                component: '@/pages/live/manage',
-                exact: true,
-                access: 'live/manage',
+                path: 'manage',
+                component: './live/manage',
+                name: '管理直播间',
+                hideInMenu: true,
+                // access: 'live/manage',
               },
             ],
           },
           {
             path: '/interact',
-            exact: true,
-            menu: {
-              name: '互动管理', // 兼容此写法
-            },
-            access: 'interact',
+            name: '互动管理', // 兼容此写法
+            // access: 'interact',
             routes: [
               {
-                path: '/interact/comment',
-                component: '@/pages/interact/comment',
+                path: 'comment',
+                component: './interact/comment',
                 exact: true,
-                access: 'interact/comment',
+                name: '弹幕评论管理',
+                // access: 'interact/comment',
               },
               {
-                path: '/interact/other',
-                component: '@/pages/interact/other',
+                path: 'other',
+                component: './interact/other',
                 exact: true,
-                access: 'interact/other',
+                name: '其他互动管理',
+                // access: 'interact/other',
               },
             ],
           },
           {
             path: '/system',
-            exact: true,
-            menu: {
-              name: '系统管理',
-            },
-            access: 'system',
+            name: '系统管理',
+            // access: 'system',
             routes: [
               {
-                path: '/system/statistic',
-                component: '@/pages/system/statistic',
+                path: 'statistic',
+                component: './system/statistic',
                 exact: true,
-                access: 'system/statistic',
+                name: '数据统计',
+                // access: 'system/statistic',
               },
             ],
           },

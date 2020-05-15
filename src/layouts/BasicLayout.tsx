@@ -14,12 +14,12 @@ import { Link } from 'umi';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { Result, Button } from 'antd';
-// import { formatMessage } from 'umi-plugin-react/locale';
 
 import Authorized from '@/utils/Authorized';
 import { ConnectState } from '@/models/connect.d';
 import { getAuthorityFromRouter } from '@/utils/utils';
 import logo from '../assets/logo.svg';
+import { PageHeaderWrapper } from '@ant-design/pro-layout';
 
 const noMatch = (
   <Result
@@ -166,13 +166,10 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
         return <Link to={menuItemProps.path}>{defaultDom}</Link>;
       }}
       breadcrumbRender={(routers = []) => [
-        // {
-        //   path: '/',
-        //   breadcrumbName: formatMessage({
-        //     id: 'menu.home',
-        //     defaultMessage: 'Home',
-        //   }),
-        // },
+        {
+          path: '/',
+          breadcrumbName: '首页',
+        },
         ...routers,
       ]}
       itemRender={(route, params, routes, paths) => {
@@ -190,7 +187,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
       {...settings}
     >
       <Authorized authority={authorized!.authority} noMatch={noMatch}>
-        {children}
+        <PageHeaderWrapper>{children}</PageHeaderWrapper>
       </Authorized>
     </ProLayout>
   );
