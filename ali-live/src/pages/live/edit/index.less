@@ -1,0 +1,32 @@
+.page_live_edit {
+  background-color: #fff;
+  padding: 20px;
+
+  .fl {
+    float: left;
+  }
+
+  .fr {
+    float: right;
+  }
+
+  .clearfix {
+    &:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: ' ';
+      clear: both;
+      height: 0;
+    }
+  }
+
+  .activeItem {
+    color: blue;
+  }
+
+  .tag_item {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+}
