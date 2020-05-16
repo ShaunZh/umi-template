@@ -3,6 +3,7 @@ import { PageLoading } from '@ant-design/pro-layout';
 import { Redirect, ConnectProps, connect } from 'umi';
 import { ConnectState } from '@/models/connect';
 import { CurrentUser } from '@/models/user';
+import { getToken } from '@/utils/token';
 
 interface SecurityLayoutProps extends ConnectProps {
   loading?: boolean;
@@ -37,7 +38,8 @@ class SecurityLayout extends React.Component<
     const { isReady } = this.state;
     const { children, loading, currentUser } = this.props;
     // 你可以把它替换成你自己的登录认证规则（比如判断 token 是否存在）
-    const isLogin = currentUser && currentUser.userid;
+    // const isLogin = currentUser && currentUser.userid;
+    const isLogin = getToken();
     // const queryString = stringify({
     //   redirect: window.location.href,
     // });

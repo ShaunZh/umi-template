@@ -13,4 +13,11 @@ export default defineConfig({
     type: 'none',
   },
   routes,
+  proxy: {
+    '/mgr': {
+      target: 'http://172.18.53.149:8002',
+      changeOrigin: true,
+      pathRewrite: { '^/mgr': '/mgr' },
+    },
+  },
 });

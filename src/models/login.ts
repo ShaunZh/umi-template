@@ -37,9 +37,10 @@ const Model: LoginModelType = {
           type: 'changeLoginStatus',
           payload: response.result,
         });
-        setToken('Bearer ' + response.result.token);
+        // setToken('Bearer ' + response.result.token);
+        setToken('Bearer ' + response.result);
         // 设置用户的权限列表
-        setAuthority(response.result.authority);
+        setAuthority(response.result.authority || '');
         // Login successfully
         history.replace('/welcome');
       } catch (e) {}
