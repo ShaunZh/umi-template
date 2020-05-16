@@ -31,7 +31,6 @@ export default () => {
   ];
 
   return (
-    //       <Link to="/live/edit">edit</Link>
     <div className="page_live">
       <div className="top_container clearfix">
         <h1 className="title fl">直播管理</h1>
@@ -119,7 +118,7 @@ export default () => {
           <div
             className="live_content"
             onClick={() => {
-              history.push('/live/edit');
+              history.push('/live/manage');
             }}
           >
             <div className="live_title">实现产业链上下游企业临时复工</div>
